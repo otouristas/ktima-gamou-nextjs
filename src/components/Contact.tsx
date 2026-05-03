@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,13 +33,12 @@ export const Contact = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('https://krtgvboewdhztlptmsvn.supabase.co/functions/v1/send-contact-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtydGd2Ym9ld2RoenRscHRtc3ZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEwMDU0NzksImV4cCI6MjA3NjU4MTQ3OX0._q-FP9L2uRsfn284ebMaGRbXfZGMkDQz0YwCDAktAH0',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ type: 'contact', ...formData }),
       });
 
       if (!response.ok) {

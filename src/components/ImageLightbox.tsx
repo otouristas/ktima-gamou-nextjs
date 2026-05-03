@@ -1,3 +1,6 @@
+'use client';
+
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 
@@ -85,14 +88,18 @@ export function ImageLightbox({ images, initialIndex = 0, isOpen, onClose }: Ima
       )}
 
       {/* Image */}
-      <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center p-4">
-        <img
-          src={images[currentIndex].src}
-          alt={images[currentIndex].alt}
-          className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-          loading="eager"
-          decoding="async"
-        />
+      <div className="relative max-w-7xl max-h-[90vh] w-full min-h-[50vh] flex items-center justify-center p-4">
+        <div className="relative h-[85vh] max-h-[900px] w-full max-w-6xl">
+          <Image
+            src={images[currentIndex].src}
+            alt={images[currentIndex].alt}
+            fill
+            className="object-contain rounded-lg shadow-2xl"
+            sizes="100vw"
+            priority
+            unoptimized={images[currentIndex].src.startsWith('http')}
+          />
+        </div>
         
         {/* Image Caption */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-white text-center max-w-2xl supports-[backdrop-filter]:backdrop-blur-sm">
@@ -113,12 +120,14 @@ export function ImageLightbox({ images, initialIndex = 0, isOpen, onClose }: Ima
                   : 'border-white/30 hover:border-white/60'
               }`}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
+                width={64}
+                height={64}
                 className="w-full h-full object-cover"
                 loading="lazy"
-                decoding="async"
+                unoptimized={image.src.startsWith('http')}
               />
             </button>
           ))}
@@ -148,12 +157,15 @@ export function ClickableImage({ src, alt, className = '', images, index = 0 }: 
   return (
     <>
       <div className="relative group cursor-pointer" onClick={() => setIsLightboxOpen(true)}>
-        <img
+        <Image
           src={src}
           alt={alt}
-          className={`${className} transition-all duration-300 group-hover:scale-105`}
+          width={1200}
+          height={800}
+          className={`${className} h-auto w-full transition-all duration-300 group-hover:scale-105`}
+          sizes="(max-width: 768px) 100vw, 896px"
           loading="lazy"
-          decoding="async"
+          unoptimized={src.startsWith('http')}
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
           <ZoomIn className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

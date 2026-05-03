@@ -1,6 +1,8 @@
-import iconHome1 from '@/assets/icon-home1.png';
-import iconHome3 from '@/assets/icon-home3.png';
-import iconHome5 from '@/assets/icon-home5.png';
+import Image from 'next/image';
+
+const iconHome1 = "/images/icon-home1.png";
+const iconHome3 = "/images/icon-home3.png";
+const iconHome5 = "/images/icon-home5.png";
 
 export const Features = () => {
   const features = [
@@ -31,14 +33,13 @@ export const Features = () => {
           {features.map((feature, index) => (
             <div key={index} className="text-center">
               <div className="mb-8">
-                <img 
-                  src={feature.icon} 
+                <Image
+                  src={feature.icon}
                   alt={feature.subtitle}
-                  className="w-24 h-24 mx-auto object-contain"
                   width={96}
                   height={96}
+                  className="w-24 h-24 mx-auto object-contain"
                   loading="lazy"
-                  decoding="async"
                 />
               </div>
               

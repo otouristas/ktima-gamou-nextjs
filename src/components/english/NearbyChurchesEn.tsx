@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Church, MapPin, Clock } from 'lucide-react';
 
@@ -58,7 +58,7 @@ export const NearbyChurchesEn = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {churches.map((church, index) => (
-            <Link key={index} to={church.link}>
+            <Link key={index} href={church.link}>
               <Card className="card-elegant h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-6">
                   <div className="flex flex-col items-center text-center space-y-3">
@@ -85,7 +85,7 @@ export const NearbyChurchesEn = () => {
         </div>
 
         <div className="text-center mt-8">
-          <Link to="/en/churches">
+          <Link href="/en/churches">
             <button className="button button4">
               VIEW ALL CHURCHES
             </button>

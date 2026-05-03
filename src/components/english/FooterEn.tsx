@@ -1,5 +1,6 @@
+import Image from 'next/image';
 import { Heart, Phone, Mail, MapPin } from 'lucide-react';
-import logoDark from '@/assets/logo-dark.png';
+const logoDark = "/images/logo-dark.png";
 
 export const FooterEn = () => {
   return (
@@ -8,10 +9,14 @@ export const FooterEn = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Logo & Description */}
           <div>
-            <img 
-              src={logoDark} 
-              alt="Ktima Orion" 
+            <Image
+              src={logoDark}
+              alt="Ktima Orion"
+              width={200}
+              height={80}
               className="h-24 w-auto mb-6 filter brightness-0 invert"
+              sizes="200px"
+              loading="lazy"
             />
             <p className="text-secondary-foreground/80 leading-relaxed max-w-md">
               A beautiful green space where luxury meets the natural environment. 

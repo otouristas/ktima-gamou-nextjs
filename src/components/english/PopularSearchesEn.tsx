@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface SearchLink {
   label: string;
@@ -18,7 +18,7 @@ export const PopularSearchesEn = ({ links }: PopularSearchesEnProps) => {
             <div key={link.href} className="flex items-center gap-4">
               {index > 0 && <span className="text-muted-foreground">•</span>}
               <Link 
-                to={link.href} 
+                href={link.href} 
                 className="text-brand-main hover:underline transition-all"
               >
                 {link.label}

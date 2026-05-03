@@ -1,6 +1,8 @@
+'use client';
+
 import { useState } from 'react';
 import { Phone, X } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 
 // WhatsApp Icon Component
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -18,8 +20,8 @@ const ViberIcon = ({ className }: { className?: string }) => (
 
 export const ContactFAB = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const isEnglish = location.pathname.startsWith('/en');
+  const pathname = usePathname();
+  const isEnglish = pathname.startsWith('/en');
 
   const phoneNumber = '+306981889560';
   const whatsappUrl = `https://wa.me/306981889560?text=${encodeURIComponent(

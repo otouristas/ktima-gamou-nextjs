@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export const AboutEn = () => {
   const features = [
     'Parking space',
@@ -44,11 +46,14 @@ export const AboutEn = () => {
 
           {/* Image and Features */}
           <div className="space-y-8">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px] w-full">
+              <Image
                 src="/arxiki/9.jpg"
                 alt="Ktima Orion - Indoor space"
-                className="w-full h-[400px] object-cover"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface FeatureList {
   readonly label: string;
 }
@@ -60,13 +62,14 @@ export const About = () => {
           <div className="space-y-8">
             <div className="grid gap-6">
               {teamPhotos.map(photo => (
-                <div key={photo.src} className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                  <img
+                <div key={photo.src} className="relative rounded-2xl overflow-hidden shadow-2xl group aspect-video">
+                  <Image
                     src={photo.src}
                     alt={photo.alt}
-                    className="w-full aspect-video object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
                     loading="lazy"
-                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>

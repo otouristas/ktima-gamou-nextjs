@@ -1,10 +1,14 @@
+'use client';
+
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Menu, X, ChevronDown, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import * as Collapsible from '@radix-ui/react-collapsible';
-import logoDark from '@/assets/logo-dark.png';
-import logoWhite from '@/assets/logo-white.png';
+const logoDark = '/images/logo-dark.png';
+const logoWhite = '/images/logo-white.png';
 
 interface NavigationProps {
   isScrolled?: boolean;
@@ -39,9 +43,9 @@ const pageMapping: Record<string, string> = {
 export const Navigation = ({ isScrolled = false, isTransparent = false }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isEnglish = location.pathname.startsWith('/en');
+  const pathname = usePathname();
+  const router = useRouter();
+  const isEnglish = pathname.startsWith('/en');
 
   const navItems: NavItem[] = [
     { label: 'ΑΡΧΙΚΗ', labelEn: 'HOME', href: '/', hrefEn: '/en' },
@@ -94,15 +98,15 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
   const textColor = (isTransparent && !isScrolled) ? 'text-white' : 'text-foreground';
 
   const handleLanguageSwitch = () => {
-    const currentPath = location.pathname;
+    const currentPath = pathname;
     const targetPath = pageMapping[currentPath] || (isEnglish ? '/' : '/en');
-    navigate(targetPath);
+    router.push(targetPath);
   };
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -121,11 +125,15 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
       <div className="container-max">
         <div className="flex items-center justify-between h-20 px-4">
           {/* Logo */}
-          <Link to={isEnglish ? "/en" : "/"} className="flex items-center z-[60]">
-            <img
+          <Link href={isEnglish ? "/en" : "/"} className="flex items-center z-[60]">
+            <Image
               src={logoSrc}
               alt="Ktima Orion"
+              width={220}
+              height={80}
               className="h-20 w-auto transition-all duration-300"
+              priority
+              sizes="220px"
             />
           </Link>
 
@@ -151,7 +159,7 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.label}
-                            to={isEnglish ? subItem.hrefEn : subItem.href}
+                            href={isEnglish ? subItem.hrefEn : subItem.href}
                             className="block px-5 py-3.5 text-sm text-foreground hover:bg-brand-main/10 hover:text-brand-main transition-colors border-b border-border/30 last:border-0 font-medium"
                           >
                             {isEnglish ? subItem.labelEn : subItem.label}
@@ -162,7 +170,7 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
                   </>
                 ) : (
                   <Link
-                    to={isEnglish ? item.hrefEn : item.href}
+                    href={isEnglish ? item.hrefEn : item.href}
                     className={`font-medium text-sm tracking-wide transition-colors duration-300 hover:text-brand-main ${textColor} px-3 py-2 block`}
                   >
                     {isEnglish ? item.labelEn : item.label}
@@ -174,7 +182,7 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
 
           {/* Desktop: CTA + Language */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link to={isEnglish ? "/en/contact" : "/contact"}>
+            <Link href={isEnglish ? "/en/contact" : "/contact"}>
               <Button variant="outline" className="button button4 text-sm px-6">
                 {isEnglish ? 'REQUEST' : 'ΖΗΤΗΣΗ'}
               </Button>
@@ -254,7 +262,7 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.label}
-                            to={isEnglish ? subItem.hrefEn : subItem.href}
+                            href={isEnglish ? subItem.hrefEn : subItem.href}
                             className="block px-10 py-4 text-sm text-foreground hover:text-brand-main hover:bg-brand-main/10 transition-all font-medium"
                             onClick={() => setIsMenuOpen(false)}
                           >
@@ -265,7 +273,7 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
                     </Collapsible.Root>
                   ) : (
                     <Link
-                      to={isEnglish ? item.hrefEn : item.href}
+                      href={isEnglish ? item.hrefEn : item.href}
                       className="block px-6 py-5 text-foreground font-semibold text-base hover:text-brand-main hover:bg-muted/30 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -300,7 +308,7 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
 
               {/* Mobile CTA */}
               <div className="px-6 pb-6">
-                <Link to={isEnglish ? "/en/contact" : "/contact"}>
+                <Link href={isEnglish ? "/en/contact" : "/contact"}>
                   <Button className="w-full button button4 text-base py-6" onClick={() => setIsMenuOpen(false)}>
                     {isEnglish ? 'REQUEST' : 'ΖΗΤΗΣΗ'}
                   </Button>

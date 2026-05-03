@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Heart, Baby, Building, PartyPopper, Camera, Crown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export const ServicesEn = () => {
   const services = [
@@ -81,7 +81,7 @@ export const ServicesEn = () => {
               </ul>
               
               <Button variant="outline" className="border-brand-main text-brand-main hover:bg-brand-main hover:text-white" asChild>
-                <Link to={service.link}>LEARN MORE</Link>
+                <Link href={service.link}>LEARN MORE</Link>
               </Button>
             </div>
           ))}

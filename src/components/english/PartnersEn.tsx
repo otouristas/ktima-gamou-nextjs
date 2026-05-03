@@ -1,6 +1,7 @@
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import pleiadesLogo from '@/assets/pleiades LOGO_transparent.black.png';
-import topeventsLogo from '@/assets/topevents-logo.png';
+const pleiadesLogo = "/images/pleiades%20LOGO_transparent.black.png";
+const topeventsLogo = "/images/topevents-logo.png";
 
 export const PartnersEn = () => {
   return (
@@ -18,20 +19,28 @@ export const PartnersEn = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card className="card-elegant group hover:shadow-xl transition-all duration-300">
             <CardContent className="p-8 flex items-center justify-center">
-              <img
+              <Image
                 src={pleiadesLogo}
                 alt="Pleiades Catering Stars"
-                className="w-full max-w-[320px] opacity-90 group-hover:opacity-100 transition-opacity"
+                width={320}
+                height={320}
+                className="w-full max-w-[320px] h-auto opacity-90 group-hover:opacity-100 transition-opacity"
+                loading="lazy"
+                sizes="320px"
               />
             </CardContent>
           </Card>
           
           <Card className="card-elegant group hover:shadow-xl transition-all duration-300">
             <CardContent className="p-8 flex items-center justify-center">
-              <img
+              <Image
                 src={topeventsLogo}
                 alt="Top Events Entertainment Services"
-                className="w-full max-w-[320px] opacity-90 group-hover:opacity-100 transition-opacity"
+                width={320}
+                height={320}
+                className="w-full max-w-[320px] h-auto opacity-90 group-hover:opacity-100 transition-opacity"
+                loading="lazy"
+                sizes="320px"
               />
             </CardContent>
           </Card>

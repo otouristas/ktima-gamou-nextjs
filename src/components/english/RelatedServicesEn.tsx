@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Heart, Baby, Building, PartyPopper, Camera, Church } from 'lucide-react';
 
@@ -64,7 +64,7 @@ export const RelatedServicesEn = ({ currentPage }: RelatedServicesEnProps) => {
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Link key={index} to={service.link}>
+            <Link key={index} href={service.link}>
               <Card className="card-elegant h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center">
