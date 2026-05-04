@@ -94,8 +94,9 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
     ? 'bg-transparent'
     : 'bg-background/95 backdrop-blur-md border-b border-border';
 
-  const logoSrc = (isTransparent && !isScrolled) ? logoWhite : logoDark;
-  const textColor = (isTransparent && !isScrolled) ? 'text-white' : 'text-foreground';
+  const useLightLogo = isTransparent && !isScrolled;
+  const logoSrc = useLightLogo ? logoWhite : logoDark;
+  const textColor = useLightLogo ? 'text-white' : 'text-foreground';
 
   const handleLanguageSwitch = () => {
     const currentPath = pathname;
@@ -129,11 +130,11 @@ export const Navigation = ({ isScrolled = false, isTransparent = false }: Naviga
             <Image
               src={logoSrc}
               alt="Ktima Orion"
-              width={220}
-              height={80}
-              className="h-20 w-auto transition-all duration-300"
+              width={170}
+              height={170}
+              className={`h-16 md:h-20 w-auto max-w-[200px] object-contain object-left transition-all duration-300 ${useLightLogo ? 'drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]' : ''}`}
               priority
-              sizes="220px"
+              sizes="(max-width: 768px) 160px, 200px"
             />
           </Link>
 

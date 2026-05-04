@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Heart, Phone, Mail, MapPin } from 'lucide-react';
-const logoDark = "/images/logo-dark.png";
+const logoWhite = "/images/logo-white.png";
 
 export const FooterEn = () => {
   return (
@@ -10,11 +10,11 @@ export const FooterEn = () => {
           {/* Logo & Description */}
           <div>
             <Image
-              src={logoDark}
+              src={logoWhite}
               alt="Ktima Orion"
-              width={200}
-              height={80}
-              className="h-24 w-auto mb-6 filter brightness-0 invert"
+              width={170}
+              height={150}
+              className="h-24 w-auto mb-6 object-contain object-left"
               sizes="200px"
               loading="lazy"
             />

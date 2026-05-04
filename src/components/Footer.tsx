@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Heart, Phone, Mail, MapPin } from 'lucide-react';
-const logoDark = "/images/logo-dark.png";
+const logoWhite = "/images/logo-white.png";
 export const Footer = () => {
   return <footer className="bg-forest text-secondary-foreground">
     <div className="container-max py-16 px-4 md:px-6 lg:px-8">
@@ -8,11 +8,11 @@ export const Footer = () => {
         {/* Logo & Description */}
         <div>
           <Image
-            src={logoDark}
+            src={logoWhite}
             alt="Κτήμα Ωρίων"
-            width={200}
-            height={80}
-            className="h-24 w-auto mb-6 filter brightness-0 invert"
+            width={170}
+            height={150}
+            className="h-24 w-auto mb-6 object-contain object-left"
             sizes="200px"
             loading="lazy"
           />

@@ -21,7 +21,7 @@ export const Layout = ({ children, isTransparent = false, lang = 'el' }: LayoutP
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
