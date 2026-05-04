@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { FORMSPREE_FORM_ACTION, submitToFormspree } from '@/lib/formspree';
 
 // Contact form component with email functionality
 export const Contact = () => {
@@ -33,14 +34,14 @@ export const Contact = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ type: 'contact', ...formData }),
+      const response = await submitToFormspree({
+        type: 'contact',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
       });
-
       if (!response.ok) {
         throw new Error('Failed to send email');
       }
@@ -183,7 +184,7 @@ export const Contact = () => {
               Στείλτε μας μήνυμα
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form action={FORMSPREE_FORM_ACTION} method="POST" onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Ονοματεπώνυμο *</Label>

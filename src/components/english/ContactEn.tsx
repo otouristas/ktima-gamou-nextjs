@@ -1,9 +1,12 @@
+'use client';
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { FORMSPREE_FORM_ACTION, submitToFormspree } from '@/lib/formspree';
 
 export const ContactEn = () => {
   const [formData, setFormData] = useState({
@@ -30,15 +33,14 @@ export const ContactEn = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('https://krtgvboewdhztlptmsvn.supabase.co/functions/v1/send-contact-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtydGd2Ym9ld2RoenRscHRtc3ZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEwMDU0NzksImV4cCI6MjA3NjU4MTQ3OX0._q-FP9L2uRsfn284ebMaGRbXfZGMkDQz0YwCDAktAH0',
-        },
-        body: JSON.stringify(formData),
+      const response = await submitToFormspree({
+        type: 'contact',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
       });
-
       if (!response.ok) {
         throw new Error('Failed to send email');
       }
@@ -181,7 +183,7 @@ export const ContactEn = () => {
               Send us a message
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form action={FORMSPREE_FORM_ACTION} method="POST" onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name *</Label>

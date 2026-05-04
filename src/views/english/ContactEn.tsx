@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, MapPin, Clock, Building2, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { FORMSPREE_FORM_ACTION, submitToFormspree } from '@/lib/formspree';
 
 export default function ContactEn() {
   const [formData, setFormData] = useState({
@@ -37,19 +38,18 @@ export default function ContactEn() {
     setErrorMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'contact',
-          name: `${formData.firstName} ${formData.lastName}`.trim(),
-          email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject || `Contact — ${formData.eventType}`,
-          message: `Event type: ${formData.eventType}\nGuests: ${formData.guestCount}\n\n${formData.message}`,
-        }),
+      const response = await submitToFormspree({
+        type: 'contact',
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        phone: formData.phone,
+        eventType: formData.eventType,
+        guestCount: formData.guestCount,
+        subject: formData.subject || `Contact — ${formData.eventType}`,
+        message: `Event type: ${formData.eventType}\nGuests: ${formData.guestCount}\n\n${formData.message}`,
       });
-
       if (!response.ok) {
         throw new Error('Failed to send email');
       }
@@ -195,7 +195,7 @@ export default function ContactEn() {
                 
                 <Card className="card-elegant">
                   <CardContent className="p-8">
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form action={FORMSPREE_FORM_ACTION} method="POST" onSubmit={handleSubmit} className="space-y-6">
                       {/* Name Fields */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">

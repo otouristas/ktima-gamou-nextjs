@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Calendar, Users, Phone, Mail, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { FORMSPREE_FORM_ACTION, submitToFormspree } from '@/lib/formspree';
 
 export default function Request() {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ export default function Request() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [confirmationEmail, setConfirmationEmail] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
@@ -50,18 +52,24 @@ export default function Request() {
     setErrorMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ type: 'request', ...formData }),
+      const response = await submitToFormspree({
+        type: 'request',
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        eventType: formData.eventType,
+        eventDate: formData.eventDate,
+        guestCount: formData.guestCount,
+        budget: formData.budget,
+        specialRequests: formData.specialRequests,
+        howDidYouHear: formData.howDidYouHear,
+        services: formData.services.join(', '),
       });
-
       if (!response.ok) {
         throw new Error('Failed to send email');
       }
-
+      const submittedEmail = formData.email;
       setSubmitStatus('success');
       setFormData({
         firstName: '',
@@ -76,8 +84,7 @@ export default function Request() {
         howDidYouHear: '',
         services: []
       });
-      
-      // Scroll to top to show success message
+      setConfirmationEmail(submittedEmail);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -111,7 +118,7 @@ export default function Request() {
                 <h3 className="text-2xl font-bold text-green-800 mb-2">Το αίτημά σας στάλθηκε επιτυχώς!</h3>
                 <p className="text-green-700">
                   Σας ευχαριστούμε! Λάβαμε το μήνυμά σας και θα επικοινωνήσουμε μαζί σας εντός 24 ωρών.
-                  Ένα email επιβεβαίωσης έχει σταλεί στο {formData.email || 'email σας'}.
+                  Ένα email επιβεβαίωσης έχει σταλεί στο {confirmationEmail || 'email σας'}.
                 </p>
               </div>
             )}
@@ -134,7 +141,7 @@ export default function Request() {
           <div className="container-max max-w-4xl">
             <Card className="card-elegant">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form action={FORMSPREE_FORM_ACTION} method="POST" onSubmit={handleSubmit} className="space-y-8">
                   {/* Personal Information */}
                   <div>
                     <h3 className="text-2xl font-bold text-gradient-brand mb-6">Προσωπικές Πληροφορίες</h3>
