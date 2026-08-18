@@ -7,6 +7,7 @@ import { TrustSignals } from '@/components/TrustSignals';
 import { NearbyChurches } from '@/components/NearbyChurches';
 import { RelatedServices } from '@/components/RelatedServices';
 import { PopularSearches } from '@/components/PopularSearches';
+import { BaptismOffer } from '@/components/BaptismOffer';
 
 export default function KtimaVaptisis() {
     const features = [
@@ -65,6 +66,9 @@ export default function KtimaVaptisis() {
                         </div>
                     </div>
                 </section>
+
+                {/* Current offer: permanent home for the flyer the promo popup shows once. */}
+                <BaptismOffer />
 
                 {/* Why Choose Us */}
                 <section className="section-padding">

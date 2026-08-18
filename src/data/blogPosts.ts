@@ -1776,6 +1776,8 @@ Safety, menus, pricing, outdoor space and churches near the venue. For Ktima Ori
 
 ![Δεξίωση βάπτισης στο Κτήμα Ωρίων στην Κερατέα](/final-photos/vaftisi/IMG_3443.jpeg)
 
+**[Κατεβάστε την προσφορά σε εικόνα](/promo/ktimaorion1.jpeg)** και δείτε την με την ησυχία σας όποτε θέλετε.
+
 ---
 
 ## Πακέτο Classic Finger Food – 33€ / άτομο
@@ -1786,7 +1788,7 @@ Safety, menus, pricing, outdoor space and churches near the venue. For Ktima Ori
 
 - πλούσιο menu finger food,
 - επαγγελματικό προσωπικό,
-- τούρτα βάπτισης,
+- **δωρεάν τούρτα βάπτισης**,
 - κρασί ή μπύρα,
 - αναψυκτικά και νερά,
 - πιάτα και ποτήρια,
@@ -1807,7 +1809,6 @@ Safety, menus, pricing, outdoor space and churches near the venue. For Ktima Ori
 
 - premium menu finger food,
 - επαγγελματικό προσωπικό,
-- τούρτα βάπτισης,
 - κρασί ή μπύρα,
 - αναψυκτικά και νερά,
 - πιάτα και ποτήρια,
@@ -1860,7 +1861,7 @@ Safety, menus, pricing, outdoor space and churches near the venue. For Ktima Ori
 
 Η επιλογή εξαρτάται κυρίως από το ύφος που θέλετε να δώσετε στην εκδήλωση.
 
-**Επιλέξτε το Classic Package εάν** θέλετε μία ολοκληρωμένη και οικονομικότερη πρόταση με όλα τα βασικά στοιχεία μιας οργανωμένης δεξίωσης βάπτισης. Με 33€ / άτομο, αποτελεί μία ιδιαίτερα ανταγωνιστική επιλογή για μεγαλύτερες εκδηλώσεις.
+**Επιλέξτε το Classic Package εάν** θέλετε μία ολοκληρωμένη και οικονομικότερη πρόταση με όλα τα βασικά στοιχεία μιας οργανωμένης δεξίωσης βάπτισης. Με 33€ / άτομο, αποτελεί μία ιδιαίτερα ανταγωνιστική επιλογή για μεγαλύτερες εκδηλώσεις, ενώ είναι και το μοναδικό πακέτο στο οποίο η τούρτα βάπτισης προσφέρεται δωρεάν.
 
 **Επιλέξτε το Premium Package εάν** θέλετε να δώσετε μεγαλύτερη έμφαση στη γαστρονομική εμπειρία και στο menu που θα προσφερθεί στους καλεσμένους σας. Με 38€ / άτομο, η διαφορά από το Classic παραμένει περιορισμένη, ενώ η συνολική εμπειρία catering αναβαθμίζεται.
 
@@ -1904,7 +1905,7 @@ Safety, menus, pricing, outdoor space and churches near the venue. For Ktima Ori
 
 ### Περιλαμβάνεται τούρτα βάπτισης;
 
-Ναι, η τούρτα βάπτισης περιλαμβάνεται τόσο στο Classic όσο και στο Premium πακέτο.
+Η τούρτα βάπτισης προσφέρεται δωρεάν στο πακέτο Classic Finger Food των 33€ / άτομο. Στο Premium πακέτο των 38€ / άτομο δεν περιλαμβάνεται.
 
 ### Μπορούμε να προσθέσουμε επιπλέον παροχές για τα παιδιά;
 
@@ -1948,6 +1949,8 @@ Package prices apply to events from 100 guests, and all [Ktima Orion](/en/venue)
 
 ![Baptism reception at Ktima Orion in Keratea](/final-photos/vaftisi/IMG_3443.jpeg)
 
+**[Download the offer as an image](/promo/ktimaorion1.jpeg)** and read it at your own pace whenever you like.
+
 ---
 
 ## Classic Finger Food Package – €33 per person
@@ -1958,7 +1961,7 @@ The package includes:
 
 - a rich finger food menu,
 - professional service staff,
-- baptism cake,
+- **a complimentary baptism cake**,
 - wine or beer,
 - soft drinks and water,
 - plates and glasses,
@@ -1979,7 +1982,6 @@ The Premium package includes:
 
 - a premium finger food menu,
 - professional service staff,
-- baptism cake,
 - wine or beer,
 - soft drinks and water,
 - plates and glasses,
@@ -2030,7 +2032,7 @@ The inflatable castle creates a dedicated play area, while the ice cream and des
 
 The choice depends mostly on the character you want to give the event.
 
-**Choose the Classic Package if** you want a complete, more economical proposal with all the essentials of a well-organised baptism reception. At €33 per person, it is a highly competitive option for larger events.
+**Choose the Classic Package if** you want a complete, more economical proposal with all the essentials of a well-organised baptism reception. At €33 per person, it is a highly competitive option for larger events, and it is the only package in which the baptism cake is offered free of charge.
 
 **Choose the Premium Package if** you want to place greater emphasis on the food and on the menu offered to your guests. At €38 per person, the difference from the Classic remains small while the overall catering experience is upgraded.
 
@@ -2074,7 +2076,7 @@ Yes. Both packages include professional staff to serve the event.
 
 ### Is the baptism cake included?
 
-Yes, the baptism cake is included in both the Classic and the Premium package.
+The baptism cake is offered free of charge with the Classic Finger Food package at €33 per person. It is not included in the Premium package at €38 per person.
 
 ### Can we add extras for the children?
 
@@ -2139,7 +2141,7 @@ Prices apply to events from 100 guests and include the Ktima Orion venue ameniti
       {
         question: 'Περιλαμβάνεται τούρτα βάπτισης;',
         answer:
-          'Ναι, η τούρτα βάπτισης περιλαμβάνεται τόσο στο Classic όσο και στο Premium πακέτο.',
+          'Η τούρτα βάπτισης προσφέρεται δωρεάν στο πακέτο Classic Finger Food των 33€ / άτομο. Στο Premium πακέτο των 38€ / άτομο δεν περιλαμβάνεται.',
       },
       {
         question: 'Μπορούμε να προσθέσουμε επιπλέον παροχές για τα παιδιά;',

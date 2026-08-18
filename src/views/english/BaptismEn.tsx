@@ -7,6 +7,7 @@ import { TrustSignalsEn } from '@/components/english/TrustSignalsEn';
 import { NearbyChurchesEn } from '@/components/english/NearbyChurchesEn';
 import { RelatedServicesEn } from '@/components/english/RelatedServicesEn';
 import { PopularSearchesEn } from '@/components/english/PopularSearchesEn';
+import { BaptismOffer } from '@/components/BaptismOffer';
 import Link from 'next/link';
 
 interface BaptismPhoto {
@@ -115,6 +116,9 @@ export default function BaptismEn() {
             </div>
           </div>
         </section>
+
+        {/* Current offer: permanent home for the flyer the promo popup shows once. */}
+        <BaptismOffer lang="en" />
 
         {/* Baptism Features */}
         <section className="section-padding">

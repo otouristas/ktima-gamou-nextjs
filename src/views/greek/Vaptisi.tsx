@@ -7,6 +7,7 @@ import { TrustSignals } from '@/components/TrustSignals';
 import { NearbyChurches } from '@/components/NearbyChurches';
 import { RelatedServices } from '@/components/RelatedServices';
 import { PopularSearches } from '@/components/PopularSearches';
+import { BaptismOffer } from '@/components/BaptismOffer';
 import Link from 'next/link';
 
 interface BaptismPhoto {
@@ -117,6 +118,9 @@ export default function Vaptisi() {
             </div>
           </div>
         </section>
+
+        {/* Current offer: permanent home for the flyer the promo popup shows once. */}
+        <BaptismOffer />
 
         {/* Baptism Features */}
         <section className="section-padding">

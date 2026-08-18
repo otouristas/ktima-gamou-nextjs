@@ -26,6 +26,8 @@ const COPY = {
     cta: 'Δείτε τα πακέτα',
     dismiss: 'Όχι τώρα',
     close: 'Κλείσιμο',
+    findAgain: 'Θα τη βρίσκετε πάντα στη σελίδα',
+    findAgainLink: 'Βάπτιση',
     alt: 'Ολοκληρωμένα πακέτα βάπτισης στο Κτήμα Ωρίων με L. Varsos Catering',
   },
   en: {
@@ -35,6 +37,8 @@ const COPY = {
     cta: 'See the packages',
     dismiss: 'Not now',
     close: 'Close',
+    findAgain: 'You can always find it on the',
+    findAgainLink: 'Baptism page',
     alt: 'All-inclusive baptism packages at Ktima Orion with L. Varsos Catering',
   },
 } as const;
@@ -47,6 +51,8 @@ export const PromoPopup = () => {
   const isEnglish = pathname.startsWith('/en');
   const copy = isEnglish ? COPY.en : COPY.el;
   const promoHref = isEnglish ? `/en/blog/${PROMO_SLUG}` : `/blog/${PROMO_SLUG}`;
+  // The offer also lives permanently on the baptism pages, so a dismissal is never final.
+  const offerSectionHref = isEnglish ? '/en/baptism#prosfora-vaptisis' : '/vaptisi#prosfora-vaptisis';
   // Never interrupt the page the popup is advertising.
   const isPromoPage = pathname === `/blog/${PROMO_SLUG}` || pathname === `/en/blog/${PROMO_SLUG}`;
   // The homepage always re-shows the offer, on every visit and every refresh, so
@@ -174,6 +180,17 @@ export const PromoPopup = () => {
               {copy.dismiss}
             </button>
           </div>
+
+          <p className="mt-4 text-center text-xs text-muted-foreground">
+            {copy.findAgain}{' '}
+            <Link
+              href={offerSectionHref}
+              onClick={dismiss}
+              className="font-semibold text-brand-main underline underline-offset-2"
+            >
+              {copy.findAgainLink}
+            </Link>
+          </p>
         </div>
       </div>
     </div>
